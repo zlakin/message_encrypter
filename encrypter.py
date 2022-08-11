@@ -1,7 +1,8 @@
 import random
 
 file_name = "secret_message"
-file = open(file_name, "r+")
+file = open(file_name, "r")
+encrypted_file = open("encrypted_message", "w+")
 keys = []
 
 
@@ -17,7 +18,6 @@ def main(file1):
         encrypted_line = ""
         encrypt(line, encrypted_line, shifter)
     print(keys)
-    print(file)
 
 
 def encrypt(line, encryption, shift):
@@ -27,6 +27,8 @@ def encrypt(line, encryption, shift):
         char = lower_case_line[i]
         encryption += chr((ord(char) + shift - 97) % 26 + 97)
     print(encryption)
+    encrypted_file.write(encryption)
+    encrypted_file.write("\n")
 
 
 def get_rand_shifter():
