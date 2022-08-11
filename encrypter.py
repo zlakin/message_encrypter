@@ -10,6 +10,7 @@ def main(file1):
     encrypted_line = ""
     encrypt(line, encrypted_line, shifter)
     for line in file1:
+        shifter = get_rand_shifter()
         encrypted_line = ""
         encrypt(line, encrypted_line, shifter)
 
