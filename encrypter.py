@@ -1,9 +1,17 @@
 import random
+from gtts import gTTS
+import os
 
 file_name = "secret_message"
 file = open(file_name, "r")
 encrypted_file = open("encrypted_message", "w+")
 keys = []
+
+txt_speak = "Encryption finished"
+language = 'en'
+
+speak = gTTS(text=txt_speak, lang=language, slow=False)
+speak.save("finished.mp3")
 
 
 def main(file1):
@@ -18,6 +26,7 @@ def main(file1):
         encrypted_line = ""
         encrypt(line, encrypted_line, shifter)
     print(keys)
+    os.system("finished.mp3")
 
 
 def encrypt(line, encryption, shift):
