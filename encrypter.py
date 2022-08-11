@@ -2,17 +2,21 @@ import random
 
 file_name = "secret_message"
 file = open(file_name, "r")
+keys = []
 
 
 def main(file1):
     shifter = get_rand_shifter()
+    keys.append(shifter)
     line = file1.readline()
     encrypted_line = ""
     encrypt(line, encrypted_line, shifter)
     for line in file1:
         shifter = get_rand_shifter()
+        keys.append(shifter)
         encrypted_line = ""
         encrypt(line, encrypted_line, shifter)
+    print(keys)
 
 
 def encrypt(line, encryption, shift):
@@ -25,7 +29,8 @@ def encrypt(line, encryption, shift):
 
 
 def get_rand_shifter():
-    return random.randint(1, 25)
+    key = random.randint(1, 25)
+    return key
 
 
 main(file)
